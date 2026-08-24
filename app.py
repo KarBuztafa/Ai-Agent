@@ -6,8 +6,8 @@ from google import genai
 app = Flask(__name__)
 
 # API Bağlantıları
-groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-gemini_client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+groq_client = Groq(api_key=os.environ.get("groq_apikey"))
+gemini_client = genai.Client(api_key=os.environ.get("gemini_apikey"))
 
 def execute_patron_calisan_flow(user_request):
     # 1. ADIM: Groq (Patron) isteği analiz eder ve Gemini için net teknik direktif hazırlar
