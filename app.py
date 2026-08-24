@@ -25,7 +25,7 @@ def process():
         # 1. ADIM: Groq (Patron) direktif oluşturur
         patron_prompt = f"Sen PATRON ajansın. Kullanıcının şu isteği için Gemini'a verilecek net direktifi hazırla: {user_request}"
         patron_directive = groq_client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="llama3-8b-8192",
             messages=[{"role": "user", "content": patron_prompt}]
         ).choices[0].message.content
 
@@ -38,7 +38,7 @@ def process():
         # 3. ADIM: Groq (Patron) taslağı denetler ve son hali verir
         review_prompt = f"Kullanıcı İsteği: {user_request}\nÇalışan Taslağı: {gemini_work}\n\nBu taslağı incele, varsa hataları düzelt ve kullanıcıya mükemmel, net yanıtı ver."
         final_response = groq_client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="llama3-8b-8192",
             messages=[{"role": "user", "content": review_prompt}]
         ).choices[0].message.content
 
